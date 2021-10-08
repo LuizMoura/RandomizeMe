@@ -3,6 +3,7 @@
     package="com.moura.randomizeme">
 
     <application
+        android:name=".common.MainAppllication"
         android:allowBackup="true"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RandomizeMe">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.common.MainActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
