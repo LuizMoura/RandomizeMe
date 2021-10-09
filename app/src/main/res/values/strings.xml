@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Randomize Me</string>
     <string name="instructions_text">Enter an item per line then press Randomize.<br/>Press and hold Randomize to shuffle the list</string>
+    <string name="list_edit_description">Type here</string>
+    <string name="randomize_button">Randomize!</string>
+    <string name="shuffle_done_toast">Shuffled!</string>
+    <string name="about_menu">About</string>
+    <string name="about_text">Version: %1$s\n\nBackground image <a href="https://storyset.com/people">by Storyset</a></string>
 </resources>

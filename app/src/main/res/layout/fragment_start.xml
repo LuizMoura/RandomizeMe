@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.common.MainActivity">
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".presentation.common.MainActivity"
+    tools:ignore="DuplicateSpeakableTextCheck">
 
     <TextView
         android:id="@+id/instructionText"
@@ -24,19 +28,31 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:autofillHints="@null"
-        android:background="@android:drawable/alert_light_frame"
+        android:background="@android:drawable/edit_text"
+        android:freezesText="true"
         android:gravity="top"
         android:inputType="textMultiLine"
         android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@+id/randomButton"
         app:layout_constraintTop_toBottomOf="@+id/instructionText" />
 
+    <ImageView
+        android:id="@+id/assetBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.25"
+        android:contentDescription="@null"
+        android:src="@drawable/questions_bro"
+        app:layout_constraintBottom_toBottomOf="@+id/listEdit"
+        app:layout_constraintTop_toTopOf="@+id/listEdit"
+        tools:ignore="ImageContrastCheck" />
+
     <Button
         android:id="@+id/randomButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/app_name"
+        android:text="@string/randomize_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

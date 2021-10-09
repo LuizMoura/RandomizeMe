@@ -1,16 +1,14 @@
 package com.moura.randomizeme.presentation.scene.start
 
-import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import com.moura.randomizeme.BuildConfig
+import com.moura.randomizeme.R
 import com.moura.randomizeme.presentation.common.ScreenViewFactory
-import com.moura.randomizeme.presentation.common.Screens
 import com.moura.randomizeme.presentation.common.base.BaseFragment
 import com.moura.randomizeme.presentation.model.OpItem
-import com.tokenlab.betterlog.BetterLog
 import javax.inject.Inject
 
 class StartFragment : BaseFragment() {
@@ -25,6 +23,24 @@ class StartFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.inject(this)
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.help, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (item.itemId == R.id.help) {
+            AlertDialog.Builder(requireContext())
+                .setTitle(R.string.app_name)
+                .setMessage(getString(R.string.about_text, BuildConfig.VERSION_NAME))
+                .setCancelable(true)
+                .create()
+                .show()
+            true
+        } else
+            super.onOptionsItemSelected(item)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -39,6 +55,7 @@ class StartFragment : BaseFragment() {
         screenView.onRandomizeLongClick.subscribe {
             val list = OpItem.listFromString(screenView.getListText())
             screenView.setListText(list.shuffled().joinToString("\n") { it.text })
+            Toast.makeText(context, R.string.shuffle_done_toast, Toast.LENGTH_SHORT).show()
         }
 
         return screenView.rootView
